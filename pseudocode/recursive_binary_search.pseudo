@@ -1,0 +1,13 @@
+
+function binary_search(array, target, left, right)
+  if left > right
+    return -1
+
+  mid = (left + right) / 2
+
+  if array[mid] == target
+    return mid
+  elsif array[mid] > target
+    return binary_search(array[left..mid], target, left, mid - 1) // why can't we limit the search to only the relevant elements?
+  else
+    return binary_search(array[mid..right], target, mid + 1, right) // why can't we limit the search to only the relevant elements?
