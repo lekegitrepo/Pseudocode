@@ -21,10 +21,7 @@ def merge(left, right)
     end
   end
 
-  sorted_array += left
-  sorted_array += right
-
-  sorted_array
+  sorted_array + left + right
 end
 
 arr = [3, 9, 1, 10, 8, 55, 2]
