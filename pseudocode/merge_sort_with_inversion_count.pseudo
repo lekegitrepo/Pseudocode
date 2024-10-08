@@ -1,0 +1,28 @@
+
+function merge_sort_with_inversion_count(array)
+  if array.length is less or equal zero
+    return [array, 0] //array, with count which is zero here
+
+  mid = array.length / 2
+  left, left_count = merge_sort_with_inversion_count(array[0...mid])
+  right, right_count = merge_sort_with_inversion_count(array[mid..])
+
+  merge_sort, inversion_count = merge_sort_inversion_count(left, right)
+
+  [merge_sort, inversion_count + left_count + right_count]
+
+
+function merge_sort_inversion_count(left, right)
+  sorted_array = []
+  inversion_count = 0
+
+  while left and right are not empty
+    if left[0] <= right[0]
+      sorted_array.append(left.shift)
+    else
+      sorted_array.append(right.shift)
+      inversion_count += left.length
+
+  sorted_array.conact(left).conact(right)
+
+  [sorted_array, inversion_count]
