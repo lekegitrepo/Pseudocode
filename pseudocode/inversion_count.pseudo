@@ -1,7 +1,0 @@
-
-function inversion_count(array)
-  if array == nil or array is empty
-    return 0
-
-  if array[0] > array[1]
-    return 1 += inversion_count[1..]
