@@ -1,10 +1,11 @@
 
-def sum_array(array)
-  return array[0] if array.size == 1
+def sum_array(arr)
+  return arr[0] if arr.size == 1
 
-  mid = array.size / 2
-  left_sum = sum_array(array[0...mid])
-  right_sum = sum_array(array[mid..])
+  mid = arr.size / 2
+
+  left_sum = sum_array(arr[0...mid])
+  right_sum = sum_array(arr[mid..])
 
   left_sum + right_sum
 end
