@@ -1,12 +1,14 @@
 function lcs(str_one, str_two)
-  # Initialize a 2D array to store the lengths of common subsequences
+  // Initialize a 2D array to store the lengths of common subsequences
   dp = [][]
   i, j = 0
+  result = 0
   if str_one or str_two is empty
     return 0
 
   if str_one[i] == str_two[j]
-    dp[i][j] = 1 + lcs(str_one[i+1..], str_two[j+1..])
+    result = 1 + lcs(str_one[i+1..], str_two[j+1..])
   else
-    dp[i][j] = max(lcs(str_one[i+1..], str_two[j..]), lcs(str_one[i..], str_two[j+1..]))
-
+    result = max(lcs(str_one[i+1..], str_two[j..]), lcs(str_one[i..], str_two[j+1..]))
+  
+  dp[i][j] = result
