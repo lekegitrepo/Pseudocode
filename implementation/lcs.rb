@@ -21,5 +21,5 @@ def compute_lcs(str1, str2, i, j, dp)
 end
 
 str_two = 'ABCDAB'
-str_one = 'ABCDAB'
+str_one = 'BDAB'
 puts lcs(str_one, str_two) # Output: 4
