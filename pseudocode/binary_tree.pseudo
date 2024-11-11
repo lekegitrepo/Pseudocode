@@ -1,0 +1,28 @@
+import Node
+
+class BinaryTree
+  attributes
+    :root
+
+  constructor(root_value)
+    @root = new Node(root_value)
+
+
+function inorder_traversal(node, result = [])
+  if node is nil
+    return
+
+    inorder_traversal(node.left, result)
+    result.append(node.value)
+    inorder_traversal(node.right, result)
+
+  return result
+
+
+tree = new BinaryTree(3)
+
+tree.root.left = new Node(2)
+tree.root.right = new Node(5)
+tree.root.left.left = new Node(1)
+tree.root.left.right = new Node(4)
+  
