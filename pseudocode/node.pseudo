@@ -1,0 +1,11 @@
+
+class Node
+  attributes
+    :value, :left, :right
+
+  constructor(value)
+    @value
+    @left = nil
+    @right = nil
+
+

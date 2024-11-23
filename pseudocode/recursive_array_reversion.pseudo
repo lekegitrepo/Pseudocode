@@ -1,0 +1,6 @@
+
+function reverse_array(array)
+  if array is nil or empty
+    return []
+  
+  return reverse_array(array[1..]).concat(array[0])

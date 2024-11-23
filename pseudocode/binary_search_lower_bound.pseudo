@@ -1,0 +1,15 @@
+
+function lower_bound_binary_search(array, target)
+  left, right = 0, array.length
+
+  while left < right
+    mid = (left + right) / 2
+
+    if array[mid] > target
+      right = mid
+    else
+      left = mid + 1
+  
+  return left if array[left] >= target
+
+  return -1

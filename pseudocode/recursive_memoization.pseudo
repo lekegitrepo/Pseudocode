@@ -1,0 +1,8 @@
+
+function recursive_fibonacci_memoization(n, memo = {})
+  if n <= 1
+    return n
+  
+  memo[n] = recursive_fibonacci_memoization(n - 1, memo) + recursive_fibonacci_memoization(n - 2, memo)
+
+  return memo[n]

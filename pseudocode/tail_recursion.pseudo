@@ -1,0 +1,6 @@
+
+function tail_recursive_sum(array, acc = 0)
+  if array is nil or empty
+    return acc
+  
+  return tail_recursive_sum(array[1..], acc + array[0])

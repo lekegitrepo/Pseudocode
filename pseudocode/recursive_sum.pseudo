@@ -1,0 +1,8 @@
+
+function recursive_sum(array)
+  if array is nil or empty
+    return 0
+  
+  return array[0] + recursive_sum(array[1..])
+
+The time complexity is O(n) because at every recursive call the length of the array reduces by one

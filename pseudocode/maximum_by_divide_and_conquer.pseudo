@@ -1,0 +1,10 @@
+
+function find_maximum(array)
+  if array.length <= 1
+    return array
+
+  mid = array.length / 2
+  left = find_maximum(array[0...mid])
+  right = find_maximum(array[mid..])
+
+  return [left, right].max
