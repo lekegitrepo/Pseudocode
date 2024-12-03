@@ -55,10 +55,11 @@ class BinaryTree
   # pre_order_traversal(root, left, right)
   def pre_order_traversal(node, result = [])
     return if node.nil?
-
-    pre_order_traversal(node.root, result)
-    pre_order_traversal(node.left, result)
+    
     result << node.value
+    pre_order_traversal(node.left, result)
+    pre_order_traversal(node.right, result)
+    
 
     result
   end
@@ -81,3 +82,4 @@ tree = BinaryTree.new(10)
 # Performing the traversals
 puts "Inorder Traversal: #{tree.inorder_traversal(tree.root)}"
 puts "PostOrder Traversal: #{tree.post_order_traversal(tree.root)}"
+puts "PreOrder Traversal: #{tree.pre_order_traversal(tree.root)}"
