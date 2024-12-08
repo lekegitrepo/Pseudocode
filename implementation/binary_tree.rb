@@ -20,12 +20,12 @@ class BinaryTree
   end
 
   def insert(node, value)
-    return Node.new(value) if node.nil?
+    return if node.nil?
 
     if node.value < value
-      node.right = insert(node.right, value)
-    else
       node.left = insert(node.left, value)
+    elsif node.value > value
+      node.right = insert(node.right, value)
     end
     node
   end
