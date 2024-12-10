@@ -8,15 +8,19 @@ class BinaryTree
     @root = new Node(root_value)
 
 
-function inorder_traversal(node, result = [])
-  if node is nil
-    return
+  function inorder_traversal(node, result = [])
+    if node is nil
+      return
 
-    inorder_traversal(node.left, result)
-    result.append(node.value)
-    inorder_traversal(node.right, result)
+      inorder_traversal(node.left, result)
+      result.append(node.value)
+      inorder_traversal(node.right, result)
 
-  return result
+    return result
+
+  function pre_order_traversal(node, result = [])
+
+  function post_order_traversal(node, result = [])
 
 
 tree = new BinaryTree(3)
