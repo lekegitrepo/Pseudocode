@@ -39,7 +39,18 @@ class BinaryTree
     in_order_traversal(node.right, result)
 
     result
-  end.
+  end
+
+  # pre_order_traversal: root, left, right
+  def pre_order_traversal(node, result = [])
+    return if node.nil?
+
+    result << node.value
+    pre_order_traversal(node.left, result)
+    pre_order_traversal(node.right, result)
+
+    result
+  end
 end
 
 # tree = BinaryTree.new(8)
