@@ -51,6 +51,17 @@ class BinaryTree
 
     result
   end
+
+  # post_order_traversal: left, right, root
+  def post_order_traversal(node, result = [])
+    return if node.nil?
+
+    post_order_traversal(node.left, result)
+    post_order_traversal(node.right, result)
+    result << node.value
+
+    result
+  end
 end
 
 # tree = BinaryTree.new(8)
