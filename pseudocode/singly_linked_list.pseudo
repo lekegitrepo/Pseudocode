@@ -1,0 +1,23 @@
+
+class Node
+  attributes :value, :next
+
+  constructor(value, next = null)
+    @value = value
+    @next = next
+
+class LinkedList
+  attributes :head
+
+  constructor(head)
+    @head = head
+
+  function append(value)
+    new_node = Node.constructor(value)
+
+    if head == null
+      @head = new_node
+      current_node = @head
+    else
+      while current_node.next
+        current_node = current_node.next
