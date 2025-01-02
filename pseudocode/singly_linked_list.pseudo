@@ -21,3 +21,27 @@ class LinkedList
     else
       while current_node.next
         current_node = current_node.next
+
+
+  function delete(value)
+    if @head.value == value
+      @head = @head.next
+      return
+    else
+      current_node = @head
+      while current_node.next and current_node.next.value and current_node.next.value != value
+        current_node = current_node.next
+      
+    current_node = current_node.next.next if current_node.next
+
+
+  function traverse_linked_list
+    if @head == null
+      return
+    
+    current_node = @head
+    while current_node
+      p `${current_node.value}`
+      current_node = current_node.next
+
+    p 'null' if @head == null
