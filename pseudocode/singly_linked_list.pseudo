@@ -45,3 +45,18 @@ class LinkedList
       current_node = current_node.next
 
     p 'null' if @head == null
+
+  function insert(value)
+    if value is found in the linked_list.find(value)
+      return 'Value already exist in the linked_list'
+
+    current_node = @head
+    new_node = Node.constructor(value)
+
+    while current_node and current_node.value < value
+      current_node = current_node.next
+      
+      new_node.next = current_node.next
+      current_node.next = new_node
+
+  function find(value)
