@@ -46,6 +46,15 @@ class LinkedList
     current_node.next = new_node
   end
 
+  def delete(value)
+    return @head = @head.next if @head.data == value
+    
+    current_node = @head
+    current_node = current_node.next while current_node.next && current_node.next.data != value
+
+    current_node.next = current_node.next.next if current_node.next
+  end
+
   def find(value)
     return @head if @head.data == value || @head.nil?
 
@@ -64,7 +73,9 @@ linked_list.append(30)
 
 linked_list.insert(12)
 
+p linked_list.delete(34)
+
 p linked_list
 
-p linked_list.find(28)
-p linked_list.find(10)
+# p linked_list.find(28)
+# p linked_list.find(10)
