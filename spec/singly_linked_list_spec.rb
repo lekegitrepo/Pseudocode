@@ -53,6 +53,18 @@ RSpec.describe 'Singly-LinkedList' do
       end
     end
 
+    context 'when a new node is inserted into the middle of the linked-list' do
+      before do
+        [4, 6, 8, 15, 28].each { linked_list.append(_1) }
+        linked_list.insert(20)
+      end
+
+      it 'insert a new node' do
+        node = linked_list.find(20)
+        expect(node.data).to eq 20
+      end
+    end
+
     context 'when searching for a value in the linked_list' do
       before do
         [4, 6, 8, 15, 28].each { linked_list.append(_1) }
@@ -71,6 +83,19 @@ RSpec.describe 'Singly-LinkedList' do
           node = linked_list.find(30)
           expect(node).to be_nil
         end
+      end
+    end
+
+    context 'when a node is deleted from the linked-list' do
+      before do
+        [4, 6, 8, 15, 28].each { linked_list.append(_1) }
+        linked_list.delete(8)
+      end
+
+      it 'returns nil for the deleted value' do
+        node = linked_list.find(8)
+        p node
+        expect(node).to be_nil
       end
     end
   end
