@@ -55,6 +55,20 @@ class LinkedList
     current_node.next = current_node.next.next if current_node.next
   end
 
+  def reverse_linked_list
+    prev_node = nil
+    current_node = @head
+
+    while current_node
+      next_node = current_node.next
+      current_node.next = prev_node
+      prev_node = current_node
+      current_node = next_node
+    end
+    
+    @head = prev_node
+  end
+
   def find(value)
     return @head if @head.data == value || @head.nil?
 
@@ -69,13 +83,14 @@ linked_list = LinkedList.new
 
 linked_list.append(10)
 linked_list.append(28)
-linked_list.append(30)
+# linked_list.append(30)
 
-linked_list.insert(12)
+# linked_list.insert(12)
 
-p linked_list.delete(34)
+# p linked_list.delete(34)
 
 p linked_list
+p linked_list.reverse_linked_list
 
 # p linked_list.find(28)
 # p linked_list.find(10)
