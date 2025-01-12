@@ -28,21 +28,19 @@ class LinkedList
   end
 
   def insert(value)
-    return 'The value already exist in nodes' if find(value)
+    return nil if find(value)
 
     new_node = Node.new(value)
 
-    if @head.nil? || value < @head.data
+    if @head.nil? || @head.data > value
       new_node.next = @head
       @head = new_node
-      return
     end
 
     current_node = @head
     current_node = current_node.next while current_node.next && current_node.next.data < value
 
     new_node.next = current_node.next
-
     current_node.next = new_node
   end
 
@@ -59,13 +57,14 @@ class LinkedList
     prev_node = nil
     current_node = @head
 
+
     while current_node
       next_node = current_node.next
       current_node.next = prev_node
       prev_node = current_node
       current_node = next_node
     end
-    
+
     @head = prev_node
   end
 
@@ -83,14 +82,14 @@ linked_list = LinkedList.new
 
 linked_list.append(10)
 linked_list.append(28)
-# linked_list.append(30)
+linked_list.append(30)
 
 # linked_list.insert(12)
 
 # p linked_list.delete(34)
 
-p linked_list
-p linked_list.reverse_linked_list
-
+# p linked_list
+# p linked_list.reverse_linked_list
+linked_list.reverse_linked_list
 # p linked_list.find(28)
 # p linked_list.find(10)
