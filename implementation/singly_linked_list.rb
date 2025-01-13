@@ -45,8 +45,10 @@ class LinkedList
   end
 
   def delete(value)
+    return nil if @head.nil?
+
     return @head = @head.next if @head.data == value
-    
+
     current_node = @head
     current_node = current_node.next while current_node.next && current_node.next.data != value
 
@@ -82,14 +84,14 @@ linked_list = LinkedList.new
 
 linked_list.append(10)
 linked_list.append(28)
-linked_list.append(30)
+# linked_list.append(30)
 
 # linked_list.insert(12)
 
-# p linked_list.delete(34)
+linked_list.delete(10)
 
-# p linked_list
+p linked_list
 # p linked_list.reverse_linked_list
-linked_list.reverse_linked_list
+# linked_list.reverse_linked_list
 # p linked_list.find(28)
 # p linked_list.find(10)
