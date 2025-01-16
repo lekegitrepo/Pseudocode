@@ -1,0 +1,15 @@
+class Node
+  attributes :data, :next, :prev
+
+  constructor(data)
+    data = data
+    next = null
+    prev = null
+
+
+class DoublyLinkedList
+  attributes :head, :tail
+
+  constructor()
+    head = null
+    tail = null
