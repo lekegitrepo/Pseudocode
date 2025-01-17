@@ -3,13 +3,33 @@ class Node
 
   constructor(data)
     data = data
-    next = null
-    prev = null
+    @next = null
+    @prev = null
 
 
 class DoublyLinkedList
   attributes :head, :tail
 
   constructor()
-    head = null
-    tail = null
+    @head = null
+    @tail = null
+
+  function append(value)
+    new_node = Node(value)
+
+    if @head is null or the @head.data > value
+      @head.prev = new_node
+      new_node.next = @head
+      @head = new_node
+    else
+      current_node = @head
+      while current_node.next and current_node.next.data is less than value
+        current_node = current_node.next
+
+      current_node.next = new_node
+      new_node.prev = current_node
+
+  
+  function insert()
+
+  function delete()
