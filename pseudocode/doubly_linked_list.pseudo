@@ -26,8 +26,10 @@ class DoublyLinkedList
       while current_node.next and current_node.next.data is less than value
         current_node = current_node.next
 
+      new_node.next = current_node.next
       current_node.next = new_node
       new_node.prev = current_node
+      @tail = new_node if new_node.next is null
 
   
   function insert()
