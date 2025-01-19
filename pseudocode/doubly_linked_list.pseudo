@@ -14,7 +14,32 @@ class DoublyLinkedList
     @head = null
     @tail = null
 
+  function sequential_append(value)
+    this.insert(value)
+
   function append(value)
+    new_node = Node(value)
+
+    if @head is null
+      @head = new_node
+      @tail = new_node
+    else
+      @tail.next = new_node
+      new_node.prev = @tail
+
+
+  function prepend(value)
+    new_node = Node(value)
+
+    if @head is null
+      @head = new_node
+      @tail = new_node
+    else
+      @head.prev = new_node
+      new_node.next = @head
+      @head = new_node
+  
+  function insert(value)
     new_node = Node(value)
 
     if @head is null or the @head.data > value
@@ -29,9 +54,8 @@ class DoublyLinkedList
       new_node.next = current_node.next
       current_node.next = new_node
       new_node.prev = current_node
-      @tail = new_node if new_node.next is null
 
-  
-  function insert()
+    @tail = new_node if new_node.next is null
+      
 
   function delete()
