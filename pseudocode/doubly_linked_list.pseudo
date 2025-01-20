@@ -58,4 +58,23 @@ class DoublyLinkedList
     @tail = new_node if new_node.next is null
       
 
-  function delete()
+  function delete(value)
+    current_node = find(value)
+
+    if current_node is null
+      return null
+
+    if current_node.next
+      current_node.prev = current_node.next
+      current_node.next = current_node.next.next
+
+  function find(value)
+    if @head is null
+      return null
+    
+    current_node = @head
+
+    while current_node.data is not value and current_node is not null
+      current_node = current_node.next
+
+    current_node
