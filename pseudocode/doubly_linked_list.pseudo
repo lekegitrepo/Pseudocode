@@ -65,8 +65,14 @@ class DoublyLinkedList
       return null
 
     if current_node.next
-      current_node.prev = current_node.next
-      current_node.next = current_node.next.next
+      current_node.next.prev = current_node.prev
+      current_node.prev.next = current_node.next
+    
+    if @head == current_node
+      @head = @head.next
+    
+    if @tail == current_node
+      @tail = @tail.prev
 
   function find(value)
     if @head is null
