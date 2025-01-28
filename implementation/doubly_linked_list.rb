@@ -17,17 +17,28 @@ class DoublyLinkedList
   end
 
   def append(value)
+    node = Node.new(value)
+
+    if @head.nil?
+      @head = node
+      @tail = node
+    else
+      node.prev = @tail
+      @tail.next = node
+      @tail = node
+    end
   end
 
   def prepend(value)
-  end
+    node = Node.new(value)
 
-  def insert(value)
-  end
-
-  def delete(value)
-  end
-
-  def find(value)
+    if @head.nil?
+      @head = node
+      @tail = node
+    else
+      @head.prev = node
+      node.next = @head
+      @head = node
+    end
   end
 end
