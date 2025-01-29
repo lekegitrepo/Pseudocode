@@ -41,4 +41,23 @@ class DoublyLinkedList
       @head = node
     end
   end
+
+  def insert(value)
+    node = Node.new(value)
+
+    if @head.nil?
+      @head = node
+      @tail = node
+    else
+      current_node = @head
+      current_node = current_node.next while current_node.next && current_node.next.data < value
+
+      node.next = current_node.next
+      node.prev = current_node
+
+      node = current_node.next.next if current_node.next
+
+      @tail = node if node.next.nil?
+    end
+  end
 end
