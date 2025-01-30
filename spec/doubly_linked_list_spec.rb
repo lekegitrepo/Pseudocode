@@ -35,12 +35,22 @@ RSpec.describe 'Doubly-LinkedList' do
       end
     end
 
-    context 'when inserting a node to the list' do
+    context 'when inserting the first node to the list' do
       before { doubly_linked_list.insert(3) }
 
       it 'inserts the node to an appropriate position in the list' do
         expect(doubly_linked_list.head.data).to eq 3
         expect(doubly_linked_list.tail.data).to eq 3
+      end
+    end
+
+    context 'when inserting a node to the list' do
+      before { doubly_linked_list.append(6) }
+
+      it 'inserts the node to an appropriate position in the list' do
+        linked_list = doubly_linked_list.insert(3)
+        expect(doubly_linked_list.head.data).to eq 3
+        expect(doubly_linked_list.tail.data).to eq 6
       end
     end
 
