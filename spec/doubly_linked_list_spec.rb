@@ -55,11 +55,20 @@ RSpec.describe 'Doubly-LinkedList' do
     end
 
     context 'when searching the list for a node with a specified value' do
-      before { doubly_linked_list.append(8) }
+      before { [4, 5, 6, 8, 9, 12].each { doubly_linked_list.append(_1) } }
 
       it 'returns the node with specified value' do
         node = doubly_linked_list.find(8)
-        expect(doubly_linked_list.head.data).to eq node.data
+        expect(node.data).to eq 8
+      end
+    end
+
+    context 'when searching the list for a value that does not exist in the list' do
+      before { [4, 5, 6, 8, 9, 12].each { doubly_linked_list.append(_1) } }
+
+      it 'returns nil' do
+        node = doubly_linked_list.find(3)
+        expect(node).to be_nil
       end
     end
 
