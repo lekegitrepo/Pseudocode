@@ -61,4 +61,13 @@ class DoublyLinkedList
       @tail = node if node.next.nil?
     end
   end
+
+  def find(value)
+    return if @head.nil?
+
+    current_node = @head
+    current_node = current_node.next while current_node && current_node.data != value
+
+    current_node
+  end
 end
