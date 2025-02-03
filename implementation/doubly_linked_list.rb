@@ -63,11 +63,39 @@ class DoublyLinkedList
   end
 
   def find(value)
-    return if @head.nil?
+    return nil if @head.nil?
 
     current_node = @head
     current_node = current_node.next while current_node && current_node.data != value
 
     current_node
   end
+
+  def delete(value)
+    return nil if @head.nil?
+
+    if @head.data == value
+      @head = @head.next
+    else
+      current_node = @head
+      current_node = current_node.next while current_node && current_node.next.data != value
+
+      if current_node.next
+        current_node.next.next.prev = current_node
+        current_node.next = current_node.next.next
+      end
+    end
+  end
 end
+
+doubly_linked_list = DoublyLinkedList.new
+
+doubly_linked_list.append(8)
+doubly_linked_list.append(13)
+doubly_linked_list.append(18)
+
+p doubly_linked_list
+
+doubly_linked_list.delete(13)
+
+p doubly_linked_list
