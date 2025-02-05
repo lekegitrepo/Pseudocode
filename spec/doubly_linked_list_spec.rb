@@ -35,7 +35,7 @@ RSpec.describe 'Doubly-LinkedList' do
       end
     end
 
-    context 'when inserting the first node to the list' do
+    context 'when inserting the first node into the list' do
       before { doubly_linked_list.insert(3) }
 
       it 'inserts the node to an appropriate position in the list' do
@@ -72,13 +72,33 @@ RSpec.describe 'Doubly-LinkedList' do
       end
     end
 
-    context 'when a node is deleted from the list' do
+    context 'when the only node in a linked_list is deleted' do
       before { doubly_linked_list.append(8) }
 
       it 'removes the node' do
         doubly_linked_list.delete(8)
         expect(doubly_linked_list.head).to be_nil
         expect(doubly_linked_list.tail).to be_nil
+      end
+    end
+
+    context 'when the node at the tail is deleted from the list' do
+      before { [4, 5, 6, 8, 9, 12].each { doubly_linked_list.append(_1) } }
+
+      it 'removes the node' do
+        doubly_linked_list.delete(12)
+        expect(doubly_linked_list.head.data).to eq 4
+        expect(doubly_linked_list.tail.data).to eq 9
+      end
+    end
+
+    context 'when the node at the head is deleted from the list' do
+      before { [4, 5, 6, 8, 9, 12].each { doubly_linked_list.append(_1) } }
+
+      it 'removes the node' do
+        doubly_linked_list.delete(4)
+        expect(doubly_linked_list.head.data).to eq 5
+        expect(doubly_linked_list.tail.data).to eq 12
       end
     end
   end
