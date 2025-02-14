@@ -1,0 +1,30 @@
+Define Node:
+  // instance variables/attributes
+  data
+  left
+  right
+
+  // constructor
+  Function Node(data)
+    data = data
+    left = null
+    right = null
+
+Define BST:
+  root
+
+  // constructor
+  Function BST(data)
+    root = new Node(data)
+
+  Function in_order_traversal(node, result)
+    if root is null
+      return
+
+    in_order_traversal(node.left, result)
+      add node.data to result
+    in_order_traversal(node.right, result)
+
+  Function insert(data)
+
+  Function search(data)
