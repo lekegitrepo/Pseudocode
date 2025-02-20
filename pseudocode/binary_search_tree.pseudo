@@ -25,6 +25,23 @@ Define BST:
       add node.data to result
     in_order_traversal(node.right, result)
 
-  Function insert(data)
+  Function insert(node, data)
+    if node is null
+      return BST(data)
+    
+    if node.data > data
+      node.left = insert(node.left, data)
+    else
+      node.right = insert(node.right, data)
 
-  Function search(data)
+  Function search(node, data)
+    if node is null
+      return
+    
+    if node.data == data
+      return node
+    else if node.data > data
+      search(node.left, data)
+    else
+      search(node.right, data)
+    
