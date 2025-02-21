@@ -56,6 +56,15 @@ RSpec.describe 'Binary Search Tree' do
 
     context 'when the tree is traverse using in_order_traversal' do
       it 'returns the values in sorted order' do
+        expect(bst.root.data).to eq 5
+        expect(bst.root.left.data).to eq 3
+        expect(bst.root.right.data).to eq 6
+        expect(bst.root.left.left).to be_nil
+        expect(bst.root.right.left).to be_nil
+        expect(bst.root.right.right.data).to eq 16
+        expect(bst.root.right.right.left.data).to eq 12
+        expect(bst.root.right.right.left.left.data).to eq 8
+
         in_order_traversal = bst.in_order_traversal(bst.root, [])
         expect(in_order_traversal).to match([3, 5, 6, 8, 12, 16])
       end
