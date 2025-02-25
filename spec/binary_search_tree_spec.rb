@@ -70,5 +70,18 @@ RSpec.describe 'Binary Search Tree' do
       end
     end
   end
+
+  describe 'Deleting a node from the tree' do
+    before { [5, 6, 3, 16, 12, 8].each { bst.insert(_1) } }
+
+    context 'when a node is deleted' do
+      before { bst.delete(12) }
+
+      it 'deletes the node' do
+        node = bst.search(12)
+        expect(node).to be_nil
+      end
+    end
+  end
 end
 
