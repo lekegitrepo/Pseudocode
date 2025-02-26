@@ -11,6 +11,26 @@ class BST
     @root = insert_node(@root, data)
   end
 
+  def search(data)
+    search_nodes(@root, data)
+  end
+
+  def in_order_traversal(node, result)
+    return nil if node.nil?
+
+    in_order_traversal(node.left, result)
+    result << node.data
+    in_order_traversal(node.right, result)
+
+    result
+  end
+
+  def delete(value)
+    @root = delete_node(@root, value)
+  end
+
+  private
+
   def insert_node(node, data)
     return Node.new(data) if node.nil?
 
@@ -20,10 +40,6 @@ class BST
       node.right = insert_node(node.right, data)
     end
     node
-  end
-
-  def search(data)
-    search_nodes(@root, data)
   end
 
   def search_nodes(node, data)
@@ -38,14 +54,31 @@ class BST
     end
   end
 
-  def in_order_traversal(node, result)
+  def delete_node(node, value)
     return nil if node.nil?
 
-    in_order_traversal(node.left, result)
-    result << node.data
-    in_order_traversal(node.right, result)
+    if node.data > value
+      node.left = delete_node(node.left, value)
+    elsif node.data < value
+      node.right = delete_node(node.right, value)
+    else
+      return node.right if node.left.nil?
 
-    result
+      return node.left if node.right.nil?
+
+      node_successor = find_min_node(node.right)
+      node.data = node_successor.data
+
+      node.right = delete_node(node.right, node_successor.data)
+    end
+    node
+  end
+
+  def find_min_node(node)
+    current_node = node
+    current_node = current_node.left while current_node.left
+
+    current_node
   end
 end
 
