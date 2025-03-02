@@ -74,12 +74,40 @@ RSpec.describe 'Binary Search Tree' do
   describe 'Deleting a node from the tree' do
     before { [5, 6, 3, 16, 12, 8].each { bst.insert(_1) } }
 
-    context 'when a node is deleted' do
+    context 'when a leaf node is deleted' do
+      before { bst.delete(8) }
+
+      it 'deletes the node' do
+        node = bst.search(8)
+        new_leaf_node = bst.search(12)
+        expect(node).to be_nil
+        expect(new_leaf_node.data).to eq 12
+        expect(new_leaf_node.left).to be_nil
+        expect(new_leaf_node.right).to be_nil
+      end
+    end
+
+    context 'when a node that has one child is deleted' do
       before { bst.delete(12) }
 
       it 'deletes the node' do
         node = bst.search(12)
+        new_leaf_node = bst.search(8)
         expect(node).to be_nil
+        expect(new_leaf_node.data).to eq 8
+        expect(new_leaf_node.left).to be_nil
+        expect(new_leaf_node.right).to be_nil
+      end
+    end
+
+    context 'when a node that has two children is deleted' do
+      before { bst.delete(5) }
+
+      it 'deletes the node' do
+        node = bst.search(5)
+        expect(node).to be_nil
+        expect(bst.root.data).to eq 6
+        expect(bst.root.right.data).to eq 16
       end
     end
   end
