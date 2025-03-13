@@ -78,43 +78,6 @@ RSpec.describe 'Binary Search Tree' do
       before { bst.delete(8) }
 
       it 'deletes the node' do
-        node_y = bst.search(5)
-
-        node_x = node_y.left
-        node_t2 = node_x.right
-
-        p node_y
-        p '-----------------------'
-        p "node_y ^ = #{node_y}"
-        p '-----------------------'
-        p node_x
-        p '-----------------------'
-        p  "node_x ^ = #{node_x}"
-        p '-----------------------'
-        p node_t2
-        p '-----------------------'
-        p "node_t2 ^ = #{node_t2}"
-        p '-----------------------'
-        p '==========================================================='
-        p
-        
-        node_x.right = node_y
-        node_y.left =  node_t2
-
-        p node_y
-        p '-----------------------'
-        p "node_y ^ = #{node_y}"
-        p '-----------------------'
-        p node_x
-        p '-----------------------'
-        p "node_x ^ = #{node_x}"
-        p '-----------------------'
-        p node_t2
-        p '-----------------------'
-        p  "node_t2 ^ = #{node_t2}"
-
-        p "This should be true: #{node_x.right.left.data == 4}"
-
         node = bst.search(8)
         new_leaf_node = bst.search(12)
         expect(node).to be_nil
