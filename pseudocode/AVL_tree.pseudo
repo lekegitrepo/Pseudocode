@@ -38,19 +38,29 @@ Define AVLTree
     // get the balance
     balance = height(node.left) - height(node.right)
 
-    // left rotation
-
     // right rotation
+    if balance > 1 and data < node.left.data
+      return rotate_right(node)
+
+    // left rotation
+    if balance < -1 and data > node.right.data
+      return rotate_left(node)
 
     // left-right rotation
+    if balance > 1 and data > node.left.data
+      node.left = rotate_left(node.left)
+      return rotate_right(node)
 
     // right-left rotation
+    if balance < -1 and data < node.right.data
+      node.right = rotate_right(node)
+      return rotate_left(node)
 
     return node
 
   function height(node)
 
-  function left_rotation(node)
+  function rotate_left(node)
 
-  function right_rotation(node)
+  function rotate_right(node)
 
