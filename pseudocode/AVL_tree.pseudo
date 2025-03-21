@@ -65,6 +65,16 @@ Define AVLTree
     return node.height
 
   function left_rotate(node)
+    right_subtree_node = node.right
+    temp_node = right_subtree_node.left
+
+    right_subtree_node.left = node
+    node.right = temp_node
+
+    node.height = 1 + max(height(node.left), height(node.right))
+    right_subtree_node.height = 1 + max(height(right_subtree_node.left), height(right_subtree_node.right))
+
+    return right_subtree_node
 
   function right_rotate(node)
 
