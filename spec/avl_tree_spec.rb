@@ -19,7 +19,7 @@ RSpec.describe 'AVL Tree' do
     context 'when the tree needs left rotation' do
       before { [8, 15, 17].each { avl_tree.insert(_1) } }
 
-      it 'changes the root node, balance the tree and insert the node' do
+      it 'insert the node, changes the root node, and balance the tree' do
         expect(@root.data).to eq 8
         avl_tree.insert(28)
         # expect { @root }.to change(@root.data).from(8).to(15)
@@ -28,6 +28,14 @@ RSpec.describe 'AVL Tree' do
     end
 
     context 'when the tree needs right rotation' do
+      before { [10, 8, 5].each { avl_tree.insert(_1) } }
+
+      it 'insert the node, changes the root node, and balance the tree' do
+        expect(@root.data).to eq 10
+        avl_tree.insert(2)
+        # expect { @root }.to change(@root.data).from(10).to(10)
+        expect(@root.data).to eq 8
+      end
     end
 
     context 'when the tree needs left-right rotation' do
