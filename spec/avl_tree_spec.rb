@@ -9,10 +9,10 @@ RSpec.describe 'AVL Tree' do
 
       it 'inserts to the right subtree' do
         avl_tree.insert(29)
-        expect(@root.data).to eq 20
-        expect(@root.left.data).to eq 18
-        expect(@root.right.data).to eq 24
-        expect(@root.right.right.data).to eq 29
+        expect(avl_tree.root.data).to eq 20
+        expect(avl_tree.root.left.data).to eq 18
+        expect(avl_tree.root.right.data).to eq 24
+        expect(avl_tree.root.right.right.data).to eq 29
       end
     end
 
@@ -20,10 +20,10 @@ RSpec.describe 'AVL Tree' do
       before { [8, 15, 17].each { avl_tree.insert(_1) } }
 
       it 'insert the node, changes the root node, and balance the tree' do
-        expect(@root.data).to eq 8
+        expect(avl_tree.root.data).to eq 8
         avl_tree.insert(28)
-        # expect { @root }.to change(@root.data).from(8).to(15)
-        expect(@root.data).to eq 15
+        # expect { avl_tree.root }.to change(avl_tree.root.data).from(8).to(15)
+        expect(avl_tree.root.data).to eq 15
       end
     end
 
@@ -31,17 +31,33 @@ RSpec.describe 'AVL Tree' do
       before { [10, 8, 5].each { avl_tree.insert(_1) } }
 
       it 'insert the node, changes the root node, and balance the tree' do
-        expect(@root.data).to eq 10
+        expect(avl_tree.root.data).to eq 10
         avl_tree.insert(2)
-        # expect { @root }.to change(@root.data).from(10).to(10)
-        expect(@root.data).to eq 8
+        # expect { avl_tree.root }.to change(avl_tree.root.data).from(10).to(10)
+        expect(avl_tree.root.data).to eq 8
       end
     end
 
     context 'when the tree needs left-right rotation' do
+      before { [15, 10, 13].each { avl_tree.insert(_1) } }
+
+      it 'insert the node, changes the root node, and balance the tree' do
+        expect(avl_tree.root.data).to eq 15
+        avl_tree.insert(12)
+        # expect { avl_tree.root }.to change(avl_tree.root.data).from(10).to(10)
+        expect(avl_tree.root.data).to eq 10
+      end
     end
 
     context 'when the tree needs right-left rotation' do
+      before { [10, 16, 5].each { avl_tree.insert(_1) } }
+
+      it 'insert the node, changes the root node, and balance the tree' do
+        expect(avl_tree.root.data).to eq 1
+        avl_tree.insert(2)
+        # expect { avl_tree.root }.to change(avl_tree.root.data).from(10).to(10)
+        expect(avl_tree.root.data).to eq 16
+      end
     end
   end
 
