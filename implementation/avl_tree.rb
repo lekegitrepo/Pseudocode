@@ -60,6 +60,15 @@ class AVLTree
   end
 
   def right_rotate(node)
+    left_subtree = node.left
+    left_subtree_right_child = left_subtree.right
+
+    left_subtree.right = node
+    node.left = left_subtree_right_child
+
+    node.height = 1 + [height(node.left), height(node.right)].max
+    left_subtree.height = 1 + [height(left_subtree.left), height(left_subtree.right)].max
+    node
   end
 
   def left_rotate(node)
