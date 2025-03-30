@@ -53,7 +53,7 @@ RSpec.describe 'AVL Tree' do
       before { [10, 16, 5].each { avl_tree.insert(_1) } }
 
       it 'insert the node, changes the root node, and balance the tree' do
-        expect(avl_tree.root.data).to eq 1
+        expect(avl_tree.root.data).to eq 10
         avl_tree.insert(2)
         # expect { avl_tree.root }.to change(avl_tree.root.data).from(10).to(10)
         expect(avl_tree.root.data).to eq 16
