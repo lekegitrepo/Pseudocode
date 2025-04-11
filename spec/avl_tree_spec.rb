@@ -60,7 +60,9 @@ RSpec.describe 'AVL Tree' do
         avl_tree.insert(15)
         # expect { avl_tree.root }.to change(avl_tree.root.data).from(10).to(10)
         expect(avl_tree.root.data).to eq 14
+        expect(avl_tree.root.left.data).to eq 10
         expect(avl_tree.root.right.data).to eq 16
+        expect(avl_tree.root.right.left.data).to eq 15
       end
     end
   end
