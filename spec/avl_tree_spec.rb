@@ -49,6 +49,8 @@ RSpec.describe 'AVL Tree' do
         expect(avl_tree.root.height).to eq 2
         expect(avl_tree.root.left.right.data).to eq 12
         expect(avl_tree.root.right.data).to eq 15
+        expect(avl_tree.root.right.left).to be_nil
+        expect(avl_tree.root.right.right).to be_nil
       end
     end
 
