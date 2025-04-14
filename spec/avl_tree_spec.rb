@@ -73,7 +73,10 @@ RSpec.describe 'AVL Tree' do
 
   describe '#search' do
     context 'when tree is already balanced' do
+      before { [15, 10, 13].each { avl_tree.insert(_1) } }
       it 'returns the value' do
+        node = avl_tree.search(10)
+        expect(node.data).to eq 10
       end
     end
   end
