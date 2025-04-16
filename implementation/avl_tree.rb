@@ -14,12 +14,25 @@ class AVLTree
   end
 
   def search(value)
+    search_node(@root, value)
   end
 
   def traverse
   end
 
   private
+
+  def search_node(node, value)
+    return nil if node.nil?
+
+    return node if node.data == value
+
+    if value > node.data
+      search_node(node.right, value)
+    else
+      search_node(node.left, value)
+    end
+  end
 
   def insert_node(node, value)
     return Node.new(value) if node.nil?
