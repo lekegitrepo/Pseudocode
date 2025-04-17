@@ -84,7 +84,7 @@ RSpec.describe 'AVL Tree' do
       before { [15, 10, 13].each { avl_tree.insert(_1) } }
       it 'returns nil' do
         node = avl_tree.search(8)
-        expect(node.data).to be_nil
+        expect(node).to be_nil
       end
     end
   end
