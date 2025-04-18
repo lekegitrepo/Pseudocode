@@ -90,8 +90,12 @@ RSpec.describe 'AVL Tree' do
   end
 
   describe '#delete' do
-    context 'when tree is already balanced' do
+    before { [15, 10, 13].each { avl_tree.insert(_1) } }
+    context 'when node with the data is in the tree' do
       it 'deletes the node with specified data' do
+        expect(avl_tree.root.data).to eq 13
+        avl_tree.delete(13)
+        expect(avl_tree.root.data).to eq 15
       end
     end
   end
