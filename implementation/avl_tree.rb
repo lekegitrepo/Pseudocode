@@ -11,6 +11,7 @@ class AVLTree
   end
 
   def delete
+    @root = delete_node(@root, value)
   end
 
   def search(value)
@@ -32,6 +33,10 @@ class AVLTree
     else
       search_node(node.left, value)
     end
+  end
+
+  def delete_node(node, value)
+    return nil if node.nil?
   end
 
   def insert_node(node, value)
