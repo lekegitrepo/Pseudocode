@@ -94,5 +94,57 @@ Define AVLTree
   function delete_node(node, data)
     if node is null
       return null
+
+    // Step 1 BST deletion
+    if value < node.value
+      node.left = avl_delete(node.left, value)
+    else if value > node.value
+      node.right = avl_delete(node.right, value)
+    else
+      // Node to be deleted found
+      if node.left is null or node.right is null
+          temp = node.left ? node.left  node.right
+          if temp is null
+              temp = node
+              node = null
+          else
+              node = temp
+      else
+          successor = get_min(node.right)
+          node.value = successor.value
+          node.right = avl_delete(node.right, successor.value)
+
+    // If only one node
+    if node is null
+      return node
+
+    // Step 2 Update height
+    node.height = 1 + max(height(node.left), height(node.right))
+
+    // Step 3 Get balance
+    balance = height(node.left) - height(node.right)
+
+    // Step 4 Balance the tree
+
+    // Left Left Case
+    if balance > 1 and get_balance(node.left) >= 0
+      return right_rotate(node)
+
+    // Left Right Case
+    if balance > 1 and get_balance(node.left) < 0
+      node.left = left_rotate(node.left)
+      return right_rotate(node)
+
+    // Right Right Case
+    if balance < -1 and get_balance(node.right) <= 0
+      return left_rotate(node)
+
+    // Right Left Case
+    if balance < -1 and get_balance(node.right) > 0
+      node.right = right_rotate(node.right)
+      return left_rotate(node)
+
+    return node
+
     
 
