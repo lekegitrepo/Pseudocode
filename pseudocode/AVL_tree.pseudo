@@ -61,58 +61,27 @@ Define AVLTree
 
     return node
 
-  function height(node)
-    if node is null
-      return 0
-
-    return node.height
-
-  function left_rotate(node)
-    right_subtree_node = node.right
-    temp_node = right_subtree_node.left
-
-    right_subtree_node.left = node
-    node.right = temp_node
-
-    node.height = 1 + max(height(node.left), height(node.right))
-    right_subtree_node.height = 1 + max(height(right_subtree_node.left), height(right_subtree_node.right))
-
-    return right_subtree_node
-
-  function right_rotate(node)
-    left_subtree_node = node.left
-    temp_node = left_subtree_node.right
-
-    left_subtree_node.right = node
-    node.left = temp_node
-
-    node.height = 1 + max(height(node.left), height(node.right))
-    left_subtree_node.height = 1 + max(height(left_subtree_node.left), height(left_subtree_node.right))
-
-    return left_subtree_node
-
   function delete_node(node, data)
     if node is null
       return null
 
     // Step 1 BST deletion
     if value < node.value
-      node.left = avl_delete(node.left, value)
+      node.left = delete_node(node.left, value)
     else if value > node.value
-      node.right = avl_delete(node.right, value)
+      node.right = delete_node(node.right, value)
     else
       // Node to be deleted found
       if node.left is null or node.right is null
           temp = node.left ? node.left  node.right
           if temp is null
-              temp = node
               node = null
           else
               node = temp
       else
           successor = get_min(node.right)
           node.value = successor.value
-          node.right = avl_delete(node.right, successor.value)
+          node.right = delete_node(node.right, successor.value)
 
     // If only one node
     if node is null
@@ -145,6 +114,51 @@ Define AVLTree
       return left_rotate(node)
 
     return node
+
+  function height(node)
+    if node is null
+      return 0
+
+    return node.height
+
+  function left_rotate(node)
+    right_subtree_node = node.right
+    temp_node = right_subtree_node.left
+
+    right_subtree_node.left = node
+    node.right = temp_node
+
+    node.height = 1 + max(height(node.left), height(node.right))
+    right_subtree_node.height = 1 + max(height(right_subtree_node.left), height(right_subtree_node.right))
+
+    return right_subtree_node
+
+  function right_rotate(node)
+    left_subtree_node = node.left
+    temp_node = left_subtree_node.right
+
+    left_subtree_node.right = node
+    node.left = temp_node
+
+    node.height = 1 + max(height(node.left), height(node.right))
+    left_subtree_node.height = 1 + max(height(left_subtree_node.left), height(left_subtree_node.right))
+
+    return left_subtree_node
+
+  function get_min(node)
+    while (node.left is not null) {
+      node = node.left
+    }
+
+    return node
+
+  function get_balance(node)
+    if node is null
+      return 0
+    
+    height(node.left) - height(node.right)
+
+  
 
     
 
