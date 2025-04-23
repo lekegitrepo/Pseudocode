@@ -37,6 +37,14 @@ class AVLTree
 
   def delete_node(node, value)
     return nil if node.nil?
+
+    if value > node.data
+      node.right = delete_node(node.right, value)
+    elsif value < node.data
+      node.left = delete_node(node.left, value)
+    else
+      
+    end
   end
 
   def insert_node(node, value)
@@ -101,6 +109,12 @@ class AVLTree
     right_subtree.height = 1 + [height(right_subtree.left), height(right_subtree.right)].max
 
     right_subtree
+  end
+
+  def get_min_node(node)
+    node = node.left while node.left
+
+    node
   end
 end
 
