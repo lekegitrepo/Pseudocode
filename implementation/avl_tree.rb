@@ -10,7 +10,7 @@ class AVLTree
     @root = insert_node(@root, value)
   end
 
-  def delete
+  def delete(value)
     @root = delete_node(@root, value)
   end
 
@@ -33,6 +33,55 @@ class AVLTree
     else
       search_node(node.left, value)
     end
+  end
+
+  def delete_node(node, value)
+    return nil if node.nil?
+
+    if value > node.data
+      node.right = delete_node(node.right, value)
+    elsif value < node.data
+      node.left = delete_node(node.left, value)
+    else
+      if node.left.nil? || node.right.nil?
+        temp_node = node.left ? node.left : node.right
+        if temp_node.nil?
+          node = nil
+        else
+          node = temp_node
+        end
+      else
+        successor_node = get_min_node(node.right)
+        node.data = successor_node.data
+        node.right = delete_node(node.right, successor_node.data)
+      end
+    end
+
+    return node if node.nil?
+    
+    node.height = 1 + [height(node.left), height(node.right)].max
+
+    balance = height(node.left) - height(node.right)
+
+    # left rotation
+    return right_rotate(node) if balance > 1 && get_balance(node.left) >= 0
+
+    # right rotation
+    return left_rotate(node) if balance < -1 && get_balance(node.right) <= 0
+
+    # left-right rotation
+    if balance > 1 && get_balance(node.left) < 0
+      node.left = left_rotate(node.left)
+      return right_rotate(node)
+    end
+
+    # right-left rotation
+    if balance < -1 && get_balance(node.right) > 0
+      node.right = right_rotate(node.right)
+      return left_rotate(node)
+    end
+
+    return node
   end
 
   def insert_node(node, value)
