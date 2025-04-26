@@ -93,9 +93,11 @@ RSpec.describe 'AVL Tree' do
     before { [15, 10, 13].each { avl_tree.insert(_1) } }
     context 'when node with the data is in the tree' do
       it 'deletes the node with specified data' do
-        expect(avl_tree.root.data).to eq 13
+        expect(avl_tree.root.left.right.data).to eq 13
         avl_tree.delete(13)
         expect(avl_tree.root.data).to eq 15
+        node = avl_tree.search(13)
+        expect(node).to be_nil
       end
     end
   end
