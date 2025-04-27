@@ -44,12 +44,7 @@ class AVLTree
       node.left = delete_node(node.left, value)
     else
       if node.left.nil? || node.right.nil?
-        temp_node = node.left ? node.left : node.right
-        if temp_node.nil?
-          node = nil
-        else
-          node = temp_node
-        end
+        node = node.left ? node.left : node.right
       else
         successor_node = get_min_node(node.right)
         node.data = successor_node.data
@@ -57,8 +52,6 @@ class AVLTree
       end
     end
 
-    return node if node.nil?
-    
     node.height = 1 + [height(node.left), height(node.right)].max
 
     balance = height(node.left) - height(node.right)
