@@ -18,7 +18,14 @@ class AVLTree
     search_node(@root, value)
   end
 
-  def traverse
+  def in_order_traversal(node, result = [])
+    return if node.nil?
+
+    in_order_traversal(node.left, result)
+    result << node.data
+    in_order_traversal(node.right, result)
+
+    result
   end
 
   private
@@ -52,7 +59,7 @@ class AVLTree
       end
     end
 
-    return nil if node.nil?
+    return node if node.nil?
 
     node.height = 1 + [height(node.left), height(node.right)].max
 
