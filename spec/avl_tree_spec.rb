@@ -102,7 +102,7 @@ RSpec.describe 'AVL Tree' do
       before { [15, 10, 13, 9].each { avl_tree.insert(_1) } }
 
       it 'returns array' do
-        expect(avl_tree.in_order_traversal(avl_tree.root)).to match([13, 10, 9, 15])
+        expect(avl_tree.pre_order_traversal(avl_tree.root)).to match([15, 10, 9, 13])
       end
     end
   end
