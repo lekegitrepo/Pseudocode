@@ -105,6 +105,14 @@ RSpec.describe 'AVL Tree' do
         expect(avl_tree.pre_order_traversal(avl_tree.root)).to match([15, 10, 9, 13])
       end
     end
+
+    context 'when post-order-traversal' do
+      before { [15, 10, 13, 9].each { avl_tree.insert(_1) } }
+
+      it 'returns array' do
+        expect(avl_tree.post_order_traversal(avl_tree.root)).to match([10, 9, 13, 15])
+      end
+    end
   end
 
   describe '#delete' do
