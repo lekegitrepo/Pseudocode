@@ -38,6 +38,16 @@ class AVLTree
     result
   end
 
+  def post_order_traversal(node, result = [])
+    return if node.nil?
+
+    post_order_traversal(node.left, result)
+    post_order_traversal(node.right, result)
+    result << node.data
+
+    result
+  end
+
   private
 
   def search_node(node, value)
