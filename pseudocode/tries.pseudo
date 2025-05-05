@@ -1,0 +1,16 @@
+Define TrieNode:
+  children
+  is_end_of_word
+
+
+  Function TrieNode()
+    children = {}
+    is_end_of_word = false
+
+  Function insert(root, word)
+    node = root
+    for each character in the word
+      if character is not in the node.children
+        node.children[character] = new TrieNode()
+      node = node.children[character]
+    node.is_end_of_word = true
