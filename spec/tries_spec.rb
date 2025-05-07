@@ -11,7 +11,10 @@ RSpec.describe TrieNode do
     end
 
     context 'when insert valid input' do
-      it 'creates characters with trie node' do
+      before { ['tree', 'try', 'can', 'cartoon', 'cart', 'cat', 'kate'].each { trie_node.insert(_1) } }
+
+      it 'creates characters with trie nodes' do
+        expect(trie_node).not_to be_nil
       end
     end
   end
