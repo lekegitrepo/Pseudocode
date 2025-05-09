@@ -7,9 +7,11 @@ class TrieNode
   end
 
   def insert(word)
+    return nil if word.empty?
+
     node = root
-    word.split.each do |char|
-      node.children[char] = Node.new if !node.children[char]
+    word.split('').each do |char|
+      node.children[char] = Node.new if node.children[char].nil?
       node = node.children[char]
     end
     node.end_of_word = true
@@ -22,7 +24,7 @@ class Node
   attr_accessor :children, :end_of_word
   
   def initialize
-    children = {}
-    end_of_word = false
+    @children = {}
+    @end_of_word = false
   end
 end

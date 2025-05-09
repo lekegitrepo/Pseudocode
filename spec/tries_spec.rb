@@ -1,5 +1,5 @@
-require_relative '..implementation/tries'
-
+require_relative '../implementation/tries'
+require 'pry'
 RSpec.describe TrieNode do
   subject(:trie_node) { described_class.new }
 
@@ -15,6 +15,9 @@ RSpec.describe TrieNode do
 
       it 'creates characters with trie nodes' do
         expect(trie_node).not_to be_nil
+        expect(trie_node.root.children['t'].end_of_word).to be_falsy
+        expect(trie_node.root.children.keys).to eq ['t', 'c', 'k']
+        expect(trie_node.root.children.keys.size).to eq 3
       end
     end
   end
