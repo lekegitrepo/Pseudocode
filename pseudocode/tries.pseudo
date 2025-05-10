@@ -14,3 +14,12 @@ Define TrieNode:
         node.children[character] = new TrieNode()
       node = node.children[character]
     node.is_end_of_word = true
+
+  Function search(root, word)
+    node = root
+    for each character in the word
+      if character is not in the node.children
+        return false
+      node = node.children
+
+    return node.is_end_of_word
