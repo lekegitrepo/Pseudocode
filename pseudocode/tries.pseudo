@@ -23,3 +23,14 @@ Define TrieNode:
       node = node.children
 
     return node.is_end_of_word
+
+  Function words_start_with(root, word)
+    if (node or word is null)
+      return
+
+    node = root
+
+    if(first character in the word is found in the trie)
+      words_start_with(node.children[character], remaining_characters)
+    else
+      return false
