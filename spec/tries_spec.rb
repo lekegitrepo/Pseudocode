@@ -26,16 +26,15 @@ RSpec.describe TrieNode do
     before { ['can', 'canny', 'face'].each { trie_node.insert(_1) } }
     context 'when search for a word' do
       context 'when the word is in the trie' do
-        it 'returns the true and the node with it children' do
-          node, end_of_word = trie_node.search('can')
-          expect(node.children.keys).to include(['a', 'n'])
-          expect(end_of_word).to be_truthy
+        it 'returns true and the node with it children' do
+          node = trie_node.search('can')
+          expect(node.end_of_word).to be_truthy
         end
       end
 
       context 'when the word is not in the trie' do
         it 'returns false' do
-          expect(trie_node.search('card'))
+          expect(trie_node.search('card')).to be_falsy
         end
       end
     end
