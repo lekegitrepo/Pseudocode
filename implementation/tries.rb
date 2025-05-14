@@ -16,6 +16,17 @@ class TrieNode
     end
     node.end_of_word = true
   end
+
+  def search(word)
+    node = root
+
+    word.split('').each do |char|
+      return false if node.children[char].nil?
+
+      node = node.children[char]
+    end
+    node
+  end
 end
 
 private
