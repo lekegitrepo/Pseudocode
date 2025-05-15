@@ -34,3 +34,17 @@ Define TrieNode:
       words_start_with(node.children[character], remaining_characters)
     else
       return false
+
+  Function words_in_the_trie(node, words)
+    children_chars = node.children.keys
+    word set to ''
+    for char in children_chars
+      current_node = node.children[char]
+      if current_node is not is_end_of_word
+        add char to the word
+      else
+        add char to word
+        add word to words
+        word is set to ''
+
+    return words
