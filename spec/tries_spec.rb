@@ -24,6 +24,7 @@ RSpec.describe TrieNode do
 
   describe '#search' do
     before { ['can', 'canny', 'face'].each { trie_node.insert(_1) } }
+
     context 'when search for a word' do
       context 'when the word is in the trie' do
         it 'returns true and the node with it children' do
@@ -40,6 +41,13 @@ RSpec.describe TrieNode do
     end
 
     context 'when display words available in the trie' do
+      before { words.each { trie_node.insert(_1) } }
+
+      let(:words) { ['root', 'run', 'road', 'cat', 'car', 'kind', 'dune'] }
+
+      it 'returns array of words' do
+        expect(trie_node.words_in_the_tries).to match words
+      end
     end
   end
 end
