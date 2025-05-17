@@ -46,7 +46,7 @@ RSpec.describe TrieNode do
       let(:words) { ['root', 'run', 'road', 'cat', 'car', 'kind', 'dune'] }
 
       it 'returns array of words' do
-        expect(trie_node.words_in_the_tries).to match words
+        expect(trie_node.words).to match words
       end
     end
   end

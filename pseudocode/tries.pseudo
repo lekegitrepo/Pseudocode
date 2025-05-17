@@ -35,7 +35,8 @@ Define TrieNode:
     else
       return false
 
-  Function words_in_the_trie(node, words)
+  Function words(node)
+    words = []
     children_chars = node.children.keys
     word set to ''
     for char in children_chars
