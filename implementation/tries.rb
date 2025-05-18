@@ -27,6 +27,22 @@ class TrieNode
     end
     node
   end
+
+  def list_words(node = root, current_word = '', arr_words = [])
+    return if node.nil?
+
+    if node.end_of_word
+      arr_words << current_word
+      current_word = ''
+    end
+
+    node.children.each do |char, char_node|
+      p "This is char #{char} and this is char_node #{char_node}"
+      list_words(char_node, current_word + char, arr_words)
+    end
+
+    arr_words
+  end
 end
 
 private
