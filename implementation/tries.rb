@@ -10,34 +10,30 @@ class TrieNode
     return nil if word.empty?
 
     node = root
-    word.split('').each do |char|
+    word.downcase.each_char do |char|
       node.children[char] = Node.new if node.children[char].nil?
       node = node.children[char]
     end
     node.end_of_word = true
   end
 
-  def search(word)
+  def exists?(word)
     node = root
 
-    word.split('').each do |char|
+    word.each_char do |char|
       return false if node.children[char].nil?
 
       node = node.children[char]
     end
-    node
+    node.end_of_word
   end
 
   def list_words(node = root, current_word = '', arr_words = [])
     return if node.nil?
 
-    if node.end_of_word
-      arr_words << current_word
-      current_word = ''
-    end
+    arr_words << current_word if node.end_of_word
 
     node.children.each do |char, char_node|
-      p "This is char #{char} and this is char_node #{char_node}"
       list_words(char_node, current_word + char, arr_words)
     end
 
