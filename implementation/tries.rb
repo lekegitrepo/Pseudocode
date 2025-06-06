@@ -20,7 +20,7 @@ class TrieNode
   def exists?(word)
     node = root
 
-    word.each_char do |char|
+    word.downcase.each_char do |char|
       return false if node.children[char].nil?
 
       node = node.children[char]
