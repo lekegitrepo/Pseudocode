@@ -1,0 +1,11 @@
+Define Heap:
+  array
+
+  function parent_index(i)
+    return (i - 1) / 2 // floor
+
+  function left_child_index(i)
+    return (2 * i) + 1
+
+  function right_child_index(i)
+    return (2 * i) + 2
