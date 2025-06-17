@@ -8,7 +8,7 @@ class Heap
     while index > 0
       parent_index = parent_index(index)
       if heap_arr[parent_index] > heap_arr[index]
-        swap(parent_index, index)
+        swap(heap_arr, parent_index, index)
         index = parent_index
       end
     end
@@ -16,6 +16,12 @@ class Heap
   end
 
   private
+
+  def swap(arr, i, j)
+    temp = arr[i]
+    arr[i] = arr[j]
+    arr[j] = temp
+  end
 
   def parent_index(i)
     (i - 1) / 2
