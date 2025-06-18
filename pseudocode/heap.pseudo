@@ -10,20 +10,35 @@ Define Heap:
   function right_child_index(i)
     return (2 * i) + 2
 
-  function swap(parent, index)
+  function swap(heap, parent, index)
     temp = heap[parent]
     heap[parent] = heap[index]
     heap[index] = temp
 
-  Function insert(heap, value)
+  Function min_heap_insert(heap, value)
     heap.append(value)
     index = heap.length
 
     while index > 0
       parent = parent_index(index)
       if heap[parent] > heap[index]
-        swap(parent, index) // heap[parent] and heap[index]
+        swap(heap, parent, index) // heap[parent] and heap[index]
         index = parent
       else
         break
+      
+    return heap
 
+  Function max_heap_insert(heap, value)
+    heap.append(value)
+    index = heap.length
+
+    while index > 0
+      parent = parent_index(index)
+      if heap[parent] < heap[index]
+        swap(heap, parent, index)
+        index = parent
+      else
+        break
+      
+    return heap
