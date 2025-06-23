@@ -10,9 +10,26 @@ class Heap
       if heap_arr[parent_index] > heap_arr[index]
         swap(heap_arr, parent_index, index)
         index = parent_index
+      else
+        break
       end
     end
     heap_arr
+  end
+
+  def max_heap_insertion(heap, value)
+    heap << value
+    index = heap.size - 1
+
+    while index > 0
+      parent = parent_index(index)
+      if heap[parent] < heap[index]
+        swap(heap, parent, index)
+        index = parent
+      else
+        break
+      end
+    end
   end
 
   private
