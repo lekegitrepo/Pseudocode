@@ -42,3 +42,27 @@ Define Heap:
         break
       
     return heap
+
+  Function extract_max(heap)
+    if heap is empty
+      return null
+
+    max = heap[0]
+    heap[0] = heap[heap.length - 1]
+    remove last value in the heap
+
+    index = 0
+
+    while heap[2 * index + 1] is not null
+      left = 2 * index + 1
+      right = 2 * index + 2
+      large = left
+
+      if right < heap.length and heap[large] > heap[left]
+        large = right
+
+      if heap[index] < heap[large]
+        swap(heap, large, index)
+        index = large
+    
+    return max
