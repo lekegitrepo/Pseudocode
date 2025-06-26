@@ -58,7 +58,7 @@ Define Heap:
       right = 2 * index + 2
       large = left
 
-      if right < heap.length and heap[large] > heap[left]
+      if right < heap.length and heap[right] > heap[left]
         large = right
 
       if heap[index] < heap[large]
