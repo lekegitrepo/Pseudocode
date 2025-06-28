@@ -32,6 +32,31 @@ class Heap
     end
   end
 
+  def extract_max(heap)
+    return heap if heap.nil? || heap.size <= 1
+
+    max_value = heap[0]
+    heap[0] = heap.pop
+    index = 0
+
+    while !heap[2 * index + 1].nil?
+      left = 2 * index + 1
+      right = 2 * index + 2
+      max_index = left
+
+      if right < heap.size && heap[left] < heap[right]
+        max_index = right
+      end
+
+      if heap[index] < heap[max_index]
+        swap(heap, max_index, index)
+        index = max_index
+      end
+    end
+
+    max_value
+  end
+
   private
 
   def swap(arr, i, j)
