@@ -28,10 +28,11 @@ RSpec.describe Heap do
   end
 
   describe 'max extraction' do
-    before { heap.max_heap_insertion(arr, 15)}
+    before { heap.max_heap_insertion(arr, 15) }
     context 'when the max is removed' do
       it 'returns the max value and maintain the heap property for the list' do
         expect(heap.extract_max(arr)).to eq 15
+        expect(arr).not_to include(15)
       end
     end
   end
