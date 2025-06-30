@@ -66,3 +66,11 @@ Define Heap:
         index = large
     
     return max
+
+  Function build_max_heap(array)
+    Set n to array.length
+
+    for i from (n / 2 + 1) down to 0
+      heapify(array, i, n)
+
+  function heapify(array, index, array_size)
