@@ -70,7 +70,20 @@ Define Heap:
   Function build_max_heap(array)
     Set n to array.length
 
-    for i from (n / 2 + 1) down to 0
+    for i from (n / 2 - 1) down to 0
       heapify(array, i, n)
 
   function heapify(array, index, array_size)
+    max_index = index
+    left = 2 * index + 1
+    right = 2 * index + 2
+
+    if left < array_size and array[left] > array[max_index]
+      max_index = left
+    
+    if right < array_size and array[right] > array[max_index]
+      max_index = right
+
+    if max_index is not equal index
+      swap(array, index, max_index)
+      heapify(array, max_index, array_size)
