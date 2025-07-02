@@ -1,20 +1,6 @@
 Define Heap:
   array
 
-  function parent_index(i)
-    return (i - 1) / 2 // floor
-
-  function left_child_index(i)
-    return (2 * i) + 1
-
-  function right_child_index(i)
-    return (2 * i) + 2
-
-  function swap(heap, parent, index)
-    temp = heap[parent]
-    heap[parent] = heap[index]
-    heap[index] = temp
-
   Function min_heap_insert(heap, value)
     heap.append(value)
     index = heap.length
@@ -75,8 +61,8 @@ Define Heap:
 
   function heapify(array, index, array_size)
     max_index = index
-    left = 2 * index + 1
-    right = 2 * index + 2
+    left = left_child_index(index)
+    right = right_child_index(index)
 
     if left < array_size and array[left] > array[max_index]
       max_index = left
@@ -87,3 +73,20 @@ Define Heap:
     if max_index is not equal index
       swap(array, index, max_index)
       heapify(array, max_index, array_size)
+
+
+  function parent_index(i)
+    return (i - 1) / 2 // floor
+
+  function left_child_index(i)
+    return (2 * i) + 1
+
+  function right_child_index(i)
+    return (2 * i) + 2
+
+  function swap(heap, parent, index)
+    temp = heap[parent]
+    heap[parent] = heap[index]
+    heap[index] = temp
+
+  
