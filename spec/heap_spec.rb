@@ -36,4 +36,12 @@ RSpec.describe Heap do
       end
     end
   end
+
+  describe 'build max heap' do
+    context 'with random array values' do
+      it 'constructs the array with heap properties' do
+        expect(heap.build_max_heap([13, 20, 1, 16, 4, 30, 60])).to match [60, 20, 30, 16, 4, 13, 1]
+      end
+    end
+  end
 end
