@@ -57,7 +57,29 @@ class Heap
     max_value
   end
 
+  def build_max_heap(arr)
+    arr_size = arr.size
+
+    ((arr_size / 2) - 1).downto(0) { heapify(arr, _1, arr_size) }
+    arr
+  end
+
   private
+
+  def heapify(heap, index, heap_size)
+    left = left_child_index(index)
+    right = right_child_index(index)
+    max_index = index
+
+    max_index = left if left < heap_size && heap[left] > heap[max_index]
+
+    max_index = right if right < heap_size && heap[right] > heap[max_index]
+
+    if max_index != index
+      swap(heap, index, max_index)
+      heapify(heap, max_index, heap_size)
+    end
+  end
 
   def swap(arr, i, j)
     temp = arr[i]
