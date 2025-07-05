@@ -19,13 +19,7 @@ Define Heap:
     heap.append(value)
     index = heap.length
 
-    while index > 0
-      parent = parent_index(index)
-      if heap[parent] < heap[index]
-        swap(heap, parent, index)
-        index = parent
-      else
-        break
+    update_max_heap(heap, index)
       
     return heap
 
@@ -59,6 +53,20 @@ Define Heap:
     for i from (n / 2 - 1) down to 0
       heapify(array, i, n)
 
+  Function delete_at(array, i)
+    Set n to array.length
+
+    if i >= n
+      return
+
+    swap(array, i, n - 1)
+    remove last element in the array
+
+    if i > 0 and array[i] > array[parent_index(i)]
+      heapify_up(array, i)
+    else
+      heapify(array, i, n - 1)
+
   function heapify(array, index, array_size)
     max_index = index
     left = left_child_index(index)
@@ -74,6 +82,14 @@ Define Heap:
       swap(array, index, max_index)
       heapify(array, max_index, array_size)
 
+  function update_max_heap(heap, index)
+    while index > 0
+      parent = parent_index(index)
+      if heap[parent] < heap[index]
+        swap(heap, parent, index)
+        index = parent
+      else
+        break
 
   function parent_index(i)
     return (i - 1) / 2 // floor
