@@ -44,4 +44,13 @@ RSpec.describe Heap do
       end
     end
   end
+
+  describe 'delete' do
+    let(:arr) { [60, 20, 30, 16, 4, 13, 1] }
+    context 'when value is remove from a give index' do
+      it 'removes the value and constructs the array with heap properties' do
+        expect(heap.delete_at(arr, 2)).to match [60, 20, 13, 16, 4, 1]
+      end
+    end
+  end
 end
