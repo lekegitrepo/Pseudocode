@@ -21,15 +21,9 @@ class Heap
     heap << value
     index = heap.size - 1
 
-    while index > 0
-      parent = parent_index(index)
-      if heap[parent] < heap[index]
-        swap(heap, parent, index)
-        index = parent
-      else
-        break
-      end
-    end
+    update_max_heap(heap, index)
+
+    heap
   end
 
   def extract_max(heap)
@@ -64,6 +58,23 @@ class Heap
     arr
   end
 
+  def delete_at(array, i)
+    arr_size = array.size
+    return nil if i >= arr_size
+
+    array[i] = array[arr_size - 1]
+    array.pop
+    
+    parent = parent_index(i)
+
+    if i > 0 && array[i] > array[parent]
+      update_max_heap(array, i)
+    else
+      heapify(array, i, array.size)
+    end
+    array
+  end
+
   private
 
   def heapify(heap, index, heap_size)
@@ -78,6 +89,18 @@ class Heap
     if max_index != index
       swap(heap, index, max_index)
       heapify(heap, max_index, heap_size)
+    end
+  end
+
+  def update_max_heap(heap, index)
+    while index > 0
+      parent = parent_index(index)
+      if heap[parent] < heap[index]
+        swap(heap, parent, index)
+        index = parent
+      else
+        break
+      end
     end
   end
 
