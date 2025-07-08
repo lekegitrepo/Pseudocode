@@ -66,6 +66,19 @@ Define Heap:
       heapify_up(array, i)
     else
       heapify(array, i, n - 1)
+      
+    return array
+
+  Function heap_sort(array)
+    Set n to array.length - 1
+
+    build_max_heap(array)
+
+    for i from n down to 1
+      swap array[0] with array[i]
+      heapify(array, 0, i)
+
+    array
 
   function heapify(array, index, array_size)
     max_index = index
