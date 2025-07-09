@@ -53,4 +53,13 @@ RSpec.describe Heap do
       end
     end
   end
+
+  describe 'heap sort' do
+    context 'with random array values' do
+      let(:arr) { [13, 20, 1, 16, 4, 30, 60] }
+      it 'constructs and sort the array with heap properties' do
+        expect(heap.heap_sort(arr)).to match [1, 4, 13, 16, 20, 30, 60]
+      end
+    end
+  end
 end
