@@ -75,20 +75,33 @@ class Heap
     array
   end
 
+  def heap_sort(array)
+    arr_size = array.size - 1
+
+    build_max_heap(array)
+
+    (arr_size).downto(1) do |i|
+      swap(array, 0, i)
+      heapify(array, 0, i)
+    end
+
+    array
+  end
+
   private
 
-  def heapify(heap, index, heap_size)
+  def heapify(array, index, array_size)
     left = left_child_index(index)
     right = right_child_index(index)
-    max_index = index
+    max_value_index = index
 
-    max_index = left if left < heap_size && heap[left] > heap[max_index]
+    max_value_index = left if left < array_size && array[left] > array[max_value_index]
 
-    max_index = right if right < heap_size && heap[right] > heap[max_index]
+    max_value_index = right if right < array_size && array[right] > array[max_value_index]
 
-    if max_index != index
-      swap(heap, index, max_index)
-      heapify(heap, max_index, heap_size)
+    if max_value_index != index
+      swap(array, index, max_value_index)
+      heapify(array, max_value_index, array_size)
     end
   end
 
