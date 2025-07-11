@@ -51,6 +51,29 @@ class Heap
     max_value
   end
 
+  def extract_min(heap)
+    return nil if heap.empty? || heap.size <= 1
+
+    min_value = heap[0]
+    heap[0] = heap.pop
+    index = 0
+
+    while !heap[left_child_index(index)].nil?
+      left = left_child_index(index)
+      right = right_child_index(index)
+      min_index = right
+
+      min_index = left if left < heap.size && heap[left] < heap[right]
+
+      if heap[index] > heap[min_index]
+        swap(heap, index, min_index)
+        index = min_index
+      end
+    end
+
+    min_value
+  end
+
   def build_max_heap(arr)
     arr_size = arr.size
 
