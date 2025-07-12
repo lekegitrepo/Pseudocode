@@ -1,0 +1,25 @@
+
+function dijkstra(graph, source):
+    dist = map with default ∞
+    dist[source] = 0
+
+    min_heap = priority queue ordered by distance
+    min_heap.insert((0, source))  # (distance, node)
+
+    while min_heap is not empty:
+        (current_distance, current_node) = min_heap.extract_min()
+
+        if current_node is already visited:
+            continue
+
+        mark current_node as visited
+
+        for each neighbor in graph[current_node]:
+            distance = current_distance + weight to neighbor
+
+            if distance < dist[neighbor]:
+                dist[neighbor] = distance
+                min_heap.insert((distance, neighbor))
+
+    return dist
+
