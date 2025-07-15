@@ -1,10 +1,10 @@
 
-function dijkstra(graph, source):
-  dist = map with default ∞
-  dist[source] = 0
+function dijkstra(graph, source_node):
+  dist = {}  // {node: []} ∞
+  dist[source_node] = 0
 
-  min_heap = priority queue ordered by distance  // build_min_heap
-  min_heap.insert((0, source))  // (distance, node)
+  min_heap = [[node, distance_to_node], [node, distance_to_node]]  // build_min_heap
+  min_heap.insert((0, source_node))  // (distance, node)
 
   while min_heap is not empty:
       (current_distance, current_node) = min_heap.extract_min()
