@@ -39,15 +39,16 @@ class TrieNode
 
     arr_words
   end
-end
 
-private
+  private
 
-class Node
-  attr_accessor :children, :end_of_word
-  
-  def initialize
-    @children = {}
-    @end_of_word = false
+  class Node
+    attr_accessor :children, :end_of_word
+    
+    def initialize
+      @children = {}
+      @end_of_word = false
+    end
   end
 end
+
