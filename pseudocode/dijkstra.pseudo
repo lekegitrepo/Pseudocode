@@ -1,25 +1,29 @@
 
-function dijkstra(graph, source_node):
+Function dijkstra(graph, source_node):
   dist = {}  // {node: []} ∞
   dist[source_node] = 0
 
   min_heap = [[node, distance_to_node], [node, distance_to_node]]  // build_min_heap
-  min_heap.insert((0, source_node))  // (distance, node)
+  insert_min_heap(min_heap, [0, source_node])  // (distance, node) this add the source/start node to the heap
 
   while min_heap is not empty:
-      (current_distance, current_node) = min_heap.extract_min()
+    (current_distance, current_node) = min_heap.extract_min()
 
-      if current_node is already visited:
-          continue
+    if current_node is already visited:
+      continue
 
-      mark current_node as visited
+    mark current_node as visited
 
-      for each neighbor in graph[current_node]:
-          distance = current_distance + weight to neighbor
+    // this is where the node is use to interact with the graph based on it position
+    for each neighbor in graph[current_node]:
+      distance = current_distance + weight to neighbor
 
-          if distance < dist[neighbor]:
-              dist[neighbor] = distance
-              min_heap.insert((distance, neighbor))
+      if distance < dist[neighbor]:
+          dist[neighbor] = distance
+          min_heap.insert((distance, neighbor))
 
   return dist
 
+function extract_min(heap)
+
+function insert_min_heap(heap, value)
