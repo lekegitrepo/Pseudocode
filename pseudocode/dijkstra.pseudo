@@ -25,5 +25,27 @@ Function dijkstra(graph, source_node):
   return dist
 
 function extract_min(heap)
+  if heap is null or empty
+    return null
+
+  min = heap[0]
+  heap[0] = heap[heap.length - 1]
+  heap.pop // remove the last
+
+  index = 0
+
+  while heap[2 * index + 1] is not null
+    left = 2 * index + 1
+    right = 2 * index + 2
+    min_index = right
+
+    if right < heap.length and heap[left] > heap[right]
+      min_index = left
+
+    if heap[index] > heap[min_index]
+      swap(heap, index, min_index)
+      index = min_index
+
+  return min
 
 function insert_min_heap(heap, value)
