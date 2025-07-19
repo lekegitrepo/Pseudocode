@@ -7,7 +7,7 @@ Function dijkstra(graph, source_node):
   insert_min_heap(min_heap, [0, source_node])  // (distance, node) this add the source/start node to the heap
 
   while min_heap is not empty:
-    (current_distance, current_node) = min_heap.extract_min()
+    (current_distance, current_node) = extract_min_heap(min_heap)
 
     if current_node is already visited:
       continue
@@ -24,7 +24,7 @@ Function dijkstra(graph, source_node):
 
   return dist
 
-function extract_min(heap)
+function extract_min_heap(heap)
   if heap is null or empty
     return null
 
@@ -49,3 +49,15 @@ function extract_min(heap)
   return min
 
 function insert_min_heap(heap, value)
+  heap.append(value)
+  index = heap.length - 1
+
+  while index > 0
+    parent = index / 2
+    if heap[parent] > heap[index]
+      swap(heap, index, parent)
+      index = parent
+    else
+      break
+
+  return heap
