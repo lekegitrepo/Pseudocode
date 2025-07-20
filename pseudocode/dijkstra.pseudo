@@ -61,3 +61,10 @@ function insert_min_heap(heap, value)
       break
 
   return heap
+
+function swap(array, i, j)
+  temp = array[i]
+  array[i] = array[j]
+  array[j] = temp
+
+  return array
