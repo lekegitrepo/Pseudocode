@@ -20,9 +20,11 @@ Function dijkstra(graph, source_node):
 
       if distance < dist[neighbor]:
           dist[neighbor] = distance
-          min_heap.insert((distance, neighbor))
+          insert_min_heap((distance, neighbor))
 
   return dist
+
+private
 
 function extract_min_heap(heap)
   if heap is null or empty
