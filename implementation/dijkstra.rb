@@ -34,4 +34,19 @@ def dijkstra(graph, node)
 end
 
 def build_paths(previous, node)
+  paths = {}
+
+  previous.keys.each |n| do
+    path = []
+    current_node = n
+
+    while current_node && current_node != node
+      path.unshift(current_node)
+      current_node = previous[current_node]
+    end
+    path.unshift(node) = if current_node == node
+    paths[n] = path
+  end
+  paths[node] = [node]
+  paths
 end
