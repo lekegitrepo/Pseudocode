@@ -19,8 +19,8 @@ Function dijkstra(graph, source_node):
       distance = current_distance + weight to neighbor
 
       if distance < dist[neighbor]:
-          dist[neighbor] = distance
-          insert_min_heap((distance, neighbor))
+        dist[neighbor] = distance
+        insert_min_heap((distance, neighbor))
 
   return dist
 
