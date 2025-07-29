@@ -1,0 +1,28 @@
+
+function create_map()
+  return {}
+
+function add_edge(graph, x, y, directed = false)
+  if graph is null
+    graph = create_map()
+
+  if x is not in graph[x]
+    graph[x] = []
+  
+  if y is not in graph[y]
+    graph[y] = []
+
+  if graph[x] does not include y
+    graph[x].append(y)
+
+  if directed is false and graph[y] does not include x
+    graph[y].append(x)
+
+  return graph
+
+function print_graph(graph)
+  if graph is empty
+    return 'Graph is empty'
+
+  for node in graph
+    print "${node} -> ${graph[node].join(', ')}"
