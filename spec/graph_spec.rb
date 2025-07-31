@@ -11,10 +11,11 @@ RSpec.describe 'Graph' do
       end
     end
 
-    context 'with invalid input' do
+    context 'when graph_map initial value is nil' do
       let(:graph_map) { nil }
       it 'returns the inserted value' do
-        expect(add_edge(graph_map, 'A', 'B')).to be_nil
+        expect(add_edge(graph_map, 'A', 'B')).to eq({'A': ['B'], 'B': ['A']})
+        expect(graph_map).not_to be_nil
       end
     end
   end
