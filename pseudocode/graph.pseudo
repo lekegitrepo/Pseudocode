@@ -26,3 +26,20 @@ function print_graph(graph)
 
   for node in graph
     print "${node} -> ${graph[node].join(', ')}"
+
+function bfs_traversal(graph, start)
+  create empty queue
+  create visited Set
+  enqueue(start)
+  add start to visited
+
+  while queue is not empty
+    current_node = dequeue()
+    process(current_node)
+
+    for neighbor in graph[current_node]
+      if neighbor is not visited
+        enqueue(neighbor)
+        add neighbor to visited
+
+  return visited
