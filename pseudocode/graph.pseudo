@@ -43,3 +43,13 @@ function bfs_traversal(graph, start)
         add neighbor to visited
 
   return visited
+
+function dfs_traversal(graph, node, visited)
+  if node is in visited
+    return
+
+  process(node)
+  add node to visited
+
+  for each neighbor in graph[node]
+    dfs_traversal(graph, neighbor, visited)
