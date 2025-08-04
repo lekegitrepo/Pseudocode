@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../implementation/graph'
+
 RSpec.describe 'Graph' do
   describe '#add_edge' do
     let(:graph_map) { {} }
@@ -19,4 +21,21 @@ RSpec.describe 'Graph' do
       end
     end
   end
+
+    describe '#bfs_traversal' do
+      let(:graph) do
+        {
+          'A' => ['B', 'C'],
+          'B' => ['D'],
+          'C' => ['D'],
+          'D' => []
+        }
+      end
+
+      context 'with valid input' do
+       it 'returns visited nodes' do
+         expect(bfs_traversal(graph, 'C').inspect).to include('C', 'D')
+       end
+      end
+    end
 end
