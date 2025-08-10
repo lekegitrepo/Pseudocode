@@ -22,20 +22,37 @@ RSpec.describe 'Graph' do
     end
   end
 
-    describe '#bfs_traversal' do
-      let(:graph) do
-        {
-          'A' => ['B', 'C'],
-          'B' => ['D'],
-          'C' => ['D'],
-          'D' => []
-        }
-      end
+  describe '#bfs_traversal' do
+    let(:graph) do
+      {
+        'A' => ['B', 'C'],
+        'B' => ['D'],
+        'C' => ['D'],
+        'D' => []
+      }
+    end
 
-      context 'with valid input' do
-       it 'returns visited nodes' do
-         expect(bfs_traversal(graph, 'C').inspect).to include('C', 'D')
-       end
+    context 'with valid input' do
+      it 'returns visited nodes' do
+        expect(bfs_traversal(graph, 'C').inspect).to include('C', 'D')
       end
     end
+  end
+
+  describe '#dfs_traversal' do
+    let(:graph) do
+      {
+        'A' => ['B', 'C'],
+        'B' => ['D'],
+        'C' => ['D'],
+        'D' => []
+      }
+    end
+
+    context 'with valid input' do
+      it 'returns visited nodes' do
+        expect(dfs_traversal(graph, 'C').inspect).to eq['C', 'D']
+      end
+    end
+  end
 end
