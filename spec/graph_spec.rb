@@ -49,9 +49,11 @@ RSpec.describe 'Graph' do
       }
     end
 
+    let(:visited) { nil }
+
     context 'with valid input' do
       it 'returns visited nodes' do
-        expect(dfs_traversal(graph, 'C').inspect).to eq['C', 'D']
+        expect(dfs_traversal(graph, 'C', visited).to_a).to eq ['C', 'D']
       end
     end
   end

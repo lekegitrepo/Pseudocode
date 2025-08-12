@@ -53,3 +53,5 @@ function dfs_traversal(graph, node, visited)
 
   for each neighbor in graph[node]
     dfs_traversal(graph, neighbor, visited)
+  
+  return visited
