@@ -39,3 +39,16 @@ def bfs_traversal(graph, node)
 
   visited
 end
+
+def dfs_traversal(graph, node, visited)
+  visited ||= Set.new
+
+  return if visited.include?(node)
+
+  # process node here
+  visited << node
+
+  graph[node].each { dfs_traversal(graph, _1, visited) }
+
+  visited
+end
